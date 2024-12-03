@@ -5,5 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pagina de inicio del formulario</title>
   </head>
-  <body></body>
+  <body>
+    <br />
+    Nombre:
+    <span th:text="${modelo.nombre}"></span>
+    <br />
+    Apellido:
+    <span th:text="${modelo.apellido}"></span>
+    <br />
+    Edad:
+    <span th:text="${modelo.edad}"></span>
+    <br />
+    Direccion:
+    <span th:text="${modelo.direccion}"></span>
+    <br />
+    Telefono:
+    <span th:text="${modelo.telefono}"></span>
+  </body>
 </html>
