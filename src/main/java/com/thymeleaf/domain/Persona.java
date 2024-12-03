@@ -1,6 +1,7 @@
 package com.thymeleaf.domain;
 
 public class Persona {
+    private int id;
     private String nombre;
     private String apellido;
     private int edad;
@@ -13,10 +14,6 @@ public class Persona {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
     }
 
     public void setApellido(String apellido) {
@@ -45,6 +42,14 @@ public class Persona {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
