@@ -6,6 +6,8 @@ import com.thymeleaf.domain.Persona;
 
 public interface PersonaService {
 
+    List<Persona> generateList();
+
     List<Persona> getPersonas();
 
     Persona getPersona();
