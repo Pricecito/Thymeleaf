@@ -14,18 +14,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.thymeleaf.domain.Persona;
 
-@Service
+@Service("servicePersona")
 public class PersonaServiceImpl implements PersonaService {
 
-    public PersonaServiceImpl() {
-        System.out.println("INYECTANDO SERVICE");
-    }
-
-    
-    @Override
-    public ResponseEntity<?> getPersonas() {
-        return ResponseEntity.ok(personas);
-    }
+    private List<Persona> personas = new ArrayList<Persona>();
 
     public ResponseEntity<?> getPersona(int id) {
         for (var p : this.personas) {
@@ -47,11 +39,19 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public void deletePersona(Persona persona) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePersona'");
+    public ResponseEntity<?> deletePersona(int id) {
+        for (var p : this.personas) {
+            if (p.getId() == id) {
+                personas.remove(p);
+                return ResponseEntity.noContent().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+
     }
 
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deletePersona'");
+    public ResponseEntity<?> getPersonas() {
+        return ResponseEntity.ok(personas);
+    }
+
 }

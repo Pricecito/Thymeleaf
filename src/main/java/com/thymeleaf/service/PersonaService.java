@@ -10,10 +10,10 @@ public interface PersonaService {
 
     ResponseEntity<?> getPersonas();
 
-    ResponseEntity<?> getPersona();
+    ResponseEntity<?> getPersona(int id);
 
     ResponseEntity<?> savePersona(Persona persona);
 
-    ResponseEntity<?> deletePersona(Persona persona);
+    ResponseEntity<?> deletePersona(int persona);
 
 }
