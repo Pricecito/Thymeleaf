@@ -2,6 +2,7 @@ package com.thymeleaf.service;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.naming.ldap.PagedResultsResponseControl;
@@ -20,8 +21,7 @@ public class PersonaServiceImpl implements PersonaService {
         System.out.println("INYECTANDO SERVICE");
     }
 
-    private List<Persona> personas;
-
+    
     @Override
     public ResponseEntity<?> getPersonas() {
         return ResponseEntity.ok(personas);
@@ -44,12 +44,6 @@ public class PersonaServiceImpl implements PersonaService {
                 .path("/{username}")
                 .buildAndExpand(persona.getId()).toUri();
         return ResponseEntity.created(location).build();
-    }
-
-    @Override
-    public void generateList() {
-        personas = new ArrayList<Persona>();
-
     }
 
     @Override

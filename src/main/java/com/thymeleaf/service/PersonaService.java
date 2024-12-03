@@ -8,8 +8,6 @@ import com.thymeleaf.domain.Persona;
 
 public interface PersonaService {
 
-    void generateList();
-
     ResponseEntity<?> getPersonas();
 
     ResponseEntity<?> getPersona();
