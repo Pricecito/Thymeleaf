@@ -27,7 +27,12 @@
         <label>Telefono:</label>
         <input th:field="*{telefono}" />
         <br />
-        <input type="submit" value="Guardar" />
+        <input type="submit" value="Guardar" th:if="${action=='/registro'}" />
+        <input
+          type="submit"
+          value="Actualizar"
+          th:if="${action=='/registro/update'}"
+        />
       </form>
     </center>
 
