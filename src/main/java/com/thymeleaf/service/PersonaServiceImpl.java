@@ -34,17 +34,33 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public void deletePersona(int id) {
+    public Persona deletePersona(int id) {
         for (var p : this.personas) {
             if (p.getId() == id) {
                 personas.remove(p);
+                return p;
             }
         }
-
+        return null;
     }
 
     public List<Persona> getPersonas() {
         return personas;
+    }
+
+    @Override
+    public Persona updatePersona(Persona persona) {
+        for (var p : this.personas) {
+            if (p.getId() == persona.getId()) {
+                p.setNombre(persona.getNombre());
+                p.setApellido(persona.getApellido());
+                p.setDireccion(persona.getDireccion());
+                p.setEdad(persona.getEdad());
+                p.setTelefono(persona.getTelefono());
+                return p;
+            }
+        }
+        return null;
     }
 
 }

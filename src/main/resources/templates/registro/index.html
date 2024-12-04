@@ -6,9 +6,12 @@
     <title th:text="${title}">Document</title>
   </head>
   <body>
-    <h1 th:text="${title}" align="center"></h1>
+    <h1 th:text="${title_form}" align="center"></h1>
     <center>
-      <form th:object="${persona}" th:action="@{/registro}" method="post">
+      <form th:object="${persona}" th:action="@{${action}}" method="post">
+        <label>ID:</label>
+        <input type="number" th:field="*{id}" />
+        <br />
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" />
         <br />
@@ -33,6 +36,7 @@
       <table border="1" th:unless="${personas.isEmpty()}">
         <thead>
           <tr>
+            <th>ID</th>
             <th>NOMBRE</th>
             <th>APELLIDO</th>
             <th>EDAD</th>
@@ -42,11 +46,20 @@
         </thead>
         <tbody>
           <tr th:each=" p: ${personas}">
+            <th th:text="*{p.id}"></th>
             <th th:text="*{p.nombre}"></th>
             <th th:text="*{p.apellido}">APELLIDO</th>
             <th th:text="*{p.edad}">EDAD</th>
             <th th:text="*{p.direccion}">DIRECCION</th>
             <th th:text="*{p.telefono}">TELEFONO</th>
+            <th>
+              <button>
+                <a th:href="@{/registro/delete/{id}(id=${p.id})}">Eliminar</a>
+              </button>
+              <button>
+                <a th:href="@{/registro/{id}(id=${p.id})}">Editar</a>
+              </button>
+            </th>
           </tr>
         </tbody>
       </table>

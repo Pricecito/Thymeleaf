@@ -12,6 +12,8 @@ public interface PersonaService {
 
     void savePersona(Persona persona);
 
-    void deletePersona(int persona);
+    Persona updatePersona(Persona persona);
+
+    Persona deletePersona(int persona);
 
 }
