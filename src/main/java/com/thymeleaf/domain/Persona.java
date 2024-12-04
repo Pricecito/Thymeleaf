@@ -8,6 +8,10 @@ public class Persona {
     private String direccion;
     private String telefono;
 
+    public String getApellido() {
+        return apellido;
+    }
+
     public String getNombre() {
         return nombre;
     }

@@ -19,39 +19,32 @@ public class PersonaServiceImpl implements PersonaService {
 
     private List<Persona> personas = new ArrayList<Persona>();
 
-    public ResponseEntity<?> getPersona(int id) {
+    public Persona getPersona(int id) {
         for (var p : this.personas) {
             if (p.getId() == id) {
-                return ResponseEntity.ok(p);
+                return p;
             }
         }
-        return ResponseEntity.notFound().build();
+        return null;
     }
 
     @Override
-    public ResponseEntity<?> savePersona(Persona persona) {
+    public void savePersona(Persona persona) {
         this.personas.add(persona);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{username}")
-                .buildAndExpand(persona.getId()).toUri();
-        return ResponseEntity.created(location).build();
     }
 
     @Override
-    public ResponseEntity<?> deletePersona(int id) {
+    public void deletePersona(int id) {
         for (var p : this.personas) {
             if (p.getId() == id) {
                 personas.remove(p);
-                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity.notFound().build();
 
     }
 
-    public ResponseEntity<?> getPersonas() {
-        return ResponseEntity.ok(personas);
+    public List<Persona> getPersonas() {
+        return personas;
     }
 
 }

@@ -2,18 +2,16 @@ package com.thymeleaf.service;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
 import com.thymeleaf.domain.Persona;
 
 public interface PersonaService {
 
-    ResponseEntity<?> getPersonas();
+    List<Persona> getPersonas();
 
-    ResponseEntity<?> getPersona(int id);
+    Persona getPersona(int id);
 
-    ResponseEntity<?> savePersona(Persona persona);
+    void savePersona(Persona persona);
 
-    ResponseEntity<?> deletePersona(int persona);
+    void deletePersona(int persona);
 
 }

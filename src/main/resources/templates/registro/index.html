@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}">Document</title>
+  </head>
+  <body>
+    <h1 th:text="${title}" align="center"></h1>
+    <center>
+      <form th:object="${persona}" th:action="@{/registro}" method="post">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" />
+        <br />
+        <label>Apellido:</label>
+        <input type="text" th:field="*{apellido}" />
+        <br />
+        <label>Edad:</label>
+        <input type="number" th:field="*{edad}" />
+        <br />
+        <label>Direccion:</label>
+        <input th:field="*{direccion}" />
+        <br />
+        <label>Telefono:</label>
+        <input th:field="*{telefono}" />
+        <br />
+        <input type="submit" value="Guardar" />
+      </form>
+    </center>
+
+    <h2 th:if="${personas.isEmpty()}" align="center">LA LISTA ESTA VACIA</h2>
+    <center>
+      <table border="1" th:unless="${personas.isEmpty()}">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>EDAD</th>
+            <th>DIRECCION</th>
+            <th>TELEFONO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" p: ${personas}">
+            <th th:text="*{p.nombre}"></th>
+            <th th:text="*{p.apellido}">APELLIDO</th>
+            <th th:text="*{p.edad}">EDAD</th>
+            <th th:text="*{p.direccion}">DIRECCION</th>
+            <th th:text="*{p.telefono}">TELEFONO</th>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+  </body>
+</html>
